@@ -5,55 +5,37 @@ https://data.mail.ru/blog/view/339/
 https://data.mail.ru/profile/v.zenin/
 
 ### Домашее задание 1  
-==============================
+-----------
 
 ### Прототип  
 Прототип решения без логирования и конфигурирования доступен по пути:
-	~~~
-	ml_project\notebooks\prototype.ipynb
-	~~~
+	`ml_project\notebooks\prototype.ipynb`
 
 ### Анализ данных, построение отчета (EDA)  
 Для построения отчета необходимо запустить скрипт:
-	~~~
-	ml_project\scripts\create_report.py
-	~~~
+	`ml_project\scripts\create_report.py`
 Отчет доступен по пути:
-	~~~
-	ml_project\reports\EDA.html
-	~~~
+	`ml_project\reports\EDA.html`
 
 ### Тренировка модели  
 А. Для тренировки модули необходимо выполнить команду:  
-	~~~
-	python ml_project\scripts\train.py  
-	~~~
+	`python ml_project\scripts\train.py`
 В результате будет сохранена тренированная модель, а по этому пути доступны метрики:  
-	~~~
-	ml_project\models\metrics.json  
-	~~~
+	`ml_project\models\metrics.json`
   
 Б. Имеется возможность выбрать другой конфиг, с произвольными путями к данным, выходным файлам,
 а так же настройкам разделения данных на трейн/тест:  
-	~~~
-	python ml_project\scripts\train.py --config ml_project\configs\config_alt.yaml  
-	~~~
+	`python ml_project\scripts\train.py --config ml_project\configs\config_alt.yaml`
   
 ### Получение прогноза  
 А. Для получения прогноза по всему исходному тренировочному файлу необходимо выполнить команду:  
-	~~~
-	python ml_project\scripts\predict.py  
-	~~~
+	`python ml_project\scripts\predict.py`
 Результат будет доступен по пути:  
-	~~~
-	ml_project\models\predict.csv  
-	~~~
+	`ml_project\models\predict.csv`
   
 Б. Для получения прогноза по произвольному файлу, требуется указать нужный файл конфига, 
 в котором будет указан путь к нужному файлу, например так:  
-	~~~
-	python ml_project\scripts\predict.py --config ml_project\configs\config_alt.yaml  
-	~~~
+	`python ml_project\scripts\predict.py --config ml_project\configs\config_alt.yaml`
 
 
 Самооценка (29 баллов):
