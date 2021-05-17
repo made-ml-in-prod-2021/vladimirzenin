@@ -35,6 +35,12 @@ def main(config: str):
 	save_model(work_model, data_params.output_model_path)
 
 
+#@click.command(name="train_pipeline")
+#@click.argument("config")
+#def train_pipeline_command(config: str):
+#	main(config)
+
+
 if __name__ == "__main__":
 	main()
 

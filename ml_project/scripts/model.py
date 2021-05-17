@@ -24,6 +24,11 @@ def evaluate_model(work_model: LogisticRegression, X_test: DataFrame, y_test: Da
 		json.dump({"mae": mae, "mse": mse}, stream)
 
 
+def simple_predict(work_model: LogisticRegression, X: DataFrame):
+	predict = work_model.predict(X)
+	return list(predict)
+
+
 def predict(work_model: LogisticRegression, X: DataFrame, data_params: DataParams):
 	predict = work_model.predict(X)
 	DataFrame(predict).to_csv(data_params.output_predict_path, index=False, header=False)

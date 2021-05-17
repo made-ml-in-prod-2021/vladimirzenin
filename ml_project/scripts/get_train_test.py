@@ -1,6 +1,6 @@
 import logging
 import os.path
-from data_models import DataParams, SplittingParams
+from data_models import DataParams, SplittingParams, JsonArr
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from typing import Tuple
@@ -26,4 +26,16 @@ def get_predict_data(data_params: DataParams) -> pd.DataFrame:
 	else:
 		logging.error('file not exist!')
 		return None
+
+
+def get_df_from_json(input_data: JsonArr) -> pd.DataFrame:
+	columns = ['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal']
+	data = []
+	for dct in input_data.data:
+		str_data = []
+		for col_name in columns:
+			str_data.append(getattr(dct, col_name))
+		data.append(str_data)
+	return pd.DataFrame(data, columns=columns)
+
 
