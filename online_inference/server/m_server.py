@@ -5,7 +5,8 @@ import uvicorn
 import json
 
 import sys
-sys.path.insert(0, '../../ml_project/scripts')
+#sys.path.insert(0, '../../ml_project/scripts')
+sys.path.insert(0, '../scripts')
 from predict import get_predict_json
 from data_models import JsonItem, JsonArr
 
@@ -42,4 +43,5 @@ async def get_predict_batch(input_data: JsonArr) -> str:
 
 
 if __name__ == "__main__":
-    uvicorn.run("m_server:app", host="127.0.0.1", port=8050, log_level="info")
+    #uvicorn.run("m_server:app", host="127.0.0.1", port=8050, log_level="info")
+    uvicorn.run("m_server:app", host="0.0.0.0", port=8050, log_level="info")

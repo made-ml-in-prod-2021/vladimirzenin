@@ -45,6 +45,6 @@ def load_model(path: str) -> LogisticRegression:
 			work_model = pickle.load(stream)
 		return work_model
 	else:
-		logging.error('file not exist!')
+		logging.error('Model file not exist!')
 		return None
 

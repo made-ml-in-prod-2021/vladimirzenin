@@ -14,7 +14,7 @@ def get_train_test(data_params: DataParams, splitting_params: SplittingParams) -
 		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=splitting_params.test_size, random_state=splitting_params.random_state)
 		return X_train, X_test, y_train, y_test
 	else:
-		logging.error('file not exist!')
+		logging.error('For train/test file not exist!')
 		return None, None, None, None
 
 
@@ -24,7 +24,7 @@ def get_predict_data(data_params: DataParams) -> pd.DataFrame:
 		X = data.drop('target', axis=1)
 		return X
 	else:
-		logging.error('file not exist!')
+		logging.error('For predict file not exist!')
 		return None
 
 

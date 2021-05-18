@@ -1,17 +1,31 @@
-FROM python:3.6
+FROM python:3.9
 
-COPY ml_project/scripts /scripts
-RUN pip install -r /scripts/requirements.txt
+EXPOSE 8050
 
-COPY online_inference/docker/fast_server.py /fast_serv
-RUN pip install unicorn fastapi
+LABEL name=ml_in_prod \
+	hw=2 \
+	student=zenin
 
+# requirements меняются реже всего, поэтому их и их установку - в начало.
+COPY ml_project/scripts/requirements.txt /scripts/requirements.txt
+COPY online_inference/server/requirements.txt /server/requirements.txt
+
+# Объединено в одну команду с целью сокращения количества слоев.
+RUN pip install -r /scripts/requirements.txt --no-cache-dir \
+	&& pip install -r /server/requirements.txt --no-cache-dir
+
+RUN groupadd -r hw_usr && useradd --no-log-init -r -g hw_usr hw_usr
+
+USER hw_usr
+
+# В остальных файлах изменения могут быть чаще.
 COPY ml_project/configs /configs
-COPY ml_project/data /data
+COPY ml_project/models/model.pkl /models/model.pkl
 
-RUN mkdir -p /models
+# Наибольший шанс на изменения в файлах скриптов.
+COPY ml_project/scripts /scripts
+COPY online_inference/server /server
 
-WORKDIR .
+WORKDIR server
 
-#CMD ["python3", "scripts/train.py", "--config", "../configs/config.yaml"]
-CMD ["uvicorn", "main:app", " --reload"]
+CMD ["sh", "-c", "python3 m_test.py && python3 m_server.py"]
