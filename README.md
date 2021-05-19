@@ -8,4 +8,7 @@ https://data.mail.ru/profile/v.zenin/
 
 Выполнены:  
 ### Домашее задание 1  
+Папка ml_project  
 ### Домашее задание 2  
+Папка online_inference  
+Небольшие изменения в папке ml_project  
