@@ -29,14 +29,8 @@ def main(config: str):
 
 
 def get_predict_json(input_data: JsonArr) -> str:
-	#config = "../../ml_project/configs/config.yaml"
-	#output_model_path = "../../ml_project/models/model.pkl"
 	config = "../configs/config.yaml"
 	output_model_path = "../models/model.pkl"
-	
-	#data_params = read_data_params(config)
-	#if data_params is None:
-	#	return	None
 	
 	X = get_df_from_json(input_data)
 	if X is None:
