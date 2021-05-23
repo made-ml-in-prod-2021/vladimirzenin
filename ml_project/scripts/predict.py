@@ -7,21 +7,24 @@ from typing import NoReturn
 
 
 @click.command()
-@click.option("--config", help="path to yaml config.")
+@click.option("--config", default='../configs/config.yaml', help="path to yaml config.")
 def main(config: str) -> NoReturn:
 	logging.info('start')
 	data_params = read_data_params(config)
 	if data_params is None:
+		logging.error('predict failed!')
 		return	
 	logging.info('parameters read')
 	
 	X = get_predict_data(data_params)
 	if X is None:
+		logging.error('predict failed!')
 		return
 	logging.info('received data')
 	
 	work_model = load_model(data_params.output_model_path)
 	if work_model is None:
+		logging.error('predict failed!')
 		return
 	logging.info('model created')
 	

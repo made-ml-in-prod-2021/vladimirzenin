@@ -32,14 +32,14 @@ def evaluate_model(work_model: LogisticRegression, X_test: DataFrame, y_test: Da
 		json.dump({"mae": mae, "mse": mse}, stream)
 
 
-def get_predict(work_model: LogisticRegression, X: DataFrame, data_params: DataParams) -> array:
+def get_predict(work_model: LogisticRegression, X: DataFrame) -> array:
 	logging.info('start prediction model')
 	predict = work_model.predict(X)
 	return predict
 
 
 def predict(work_model: LogisticRegression, X: DataFrame, data_params: DataParams) -> NoReturn:
-	predict = get_predict()
+	predict = get_predict(work_model, X)
 	DataFrame(predict).to_csv(data_params.output_predict_path, index=False, header=False)
 
 
