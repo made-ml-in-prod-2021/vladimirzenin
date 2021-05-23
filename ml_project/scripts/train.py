@@ -7,8 +7,13 @@ from typing import NoReturn
 
 
 @click.command()
-@click.option("--config", default='../configs/config.yaml', help="path to yaml config.")
+@click.option("--config", help="path to yaml config.")
 def main(config: str) -> NoReturn:
+	if config is None:
+		logging.error('you must specify the path to config file!')
+		logging.error('train failed!')
+		return
+	
 	logging.info('start')
 	data_params = read_data_params(config)
 	splitting_params = read_splitting_params(config)

@@ -18,24 +18,24 @@ https://data.mail.ru/profile/v.zenin/
 	`ml_project\reports\EDA.html`  
 
 ### Тренировка модели  
-А. Для тренировки модули необходимо выполнить команду:  
-	`python ml_project\scripts\train.py`  
+А. Для тренировки модели необходимо выполнить команду (из папки `ml_project\scripts`):  
+	`python train.py --config ..\configs\config.yaml`  
 В результате будет сохранена тренированная модель, а по этому пути доступны метрики:  
 	`ml_project\models\metrics.json`  
   
 Б. Имеется возможность выбрать другой конфиг, с произвольными путями к данным, выходным файлам,
 а так же настройкам разделения данных на трейн/тест:  
-	`python ml_project\scripts\train.py --config ml_project\configs\config_alt.yaml`  
+	`python train.py --config ..\configs\config_alt.yaml`  
   
 ### Получение прогноза  
-А. Для получения прогноза по всему исходному тренировочному файлу необходимо выполнить команду:  
-	`python ml_project\scripts\predict.py`  
+А. Для получения прогноза по исходному тренировочному файлу необходимо выполнить команду (из папки `ml_project\scripts`):  
+	`predict.py --config ..\configs\config.yaml`  
 Результат будет доступен по пути:  
 	`ml_project\models\predict.csv`  
   
 Б. Для получения прогноза по произвольному файлу, требуется указать нужный файл конфига, 
-в котором будет указан путь к нужному файлу, например так:  
-	`python ml_project\scripts\predict.py --config ml_project\configs\config_alt.yaml`  
+в котором будет указан путь к нужному файлу, например так (из папки `ml_project\scripts`):  
+	`predict.py --config ..\configs\config_alt.yaml`  
   
 ### Тестирование  
 Для проведения тестирования необходимо перейти к папке `ml_project\tests` и выполнить следующий код:
