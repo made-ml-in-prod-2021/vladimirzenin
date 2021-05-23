@@ -38,7 +38,7 @@ https://data.mail.ru/profile/v.zenin/
 	`python ml_project\scripts\predict.py --config ml_project\configs\config_alt.yaml`  
   
 ### Тестирование  
-Для проведения тестирования необходимо перейти к папке `ml_project` и выполнить следующий код:
+Для проведения тестирования необходимо перейти к папке `ml_project\tests` и выполнить следующий код:
 	`pytest -m maintest`  
 При этом будет выполнено 4 теста находящиеся в файлах `end_2_end_test.py` и `module_test.py`  
     
