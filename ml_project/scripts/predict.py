@@ -3,11 +3,12 @@ from get_train_test import get_predict_data
 from data_models import read_data_params
 from model import predict, load_model
 import click
+from typing import NoReturn
 
 
 @click.command()
-@click.option("--config", default='../configs/config.yaml', help="path to yaml config.")
-def main(config: str):
+@click.option("--config", help="path to yaml config.")
+def main(config: str) -> NoReturn:
 	logging.info('start')
 	data_params = read_data_params(config)
 	if data_params is None:

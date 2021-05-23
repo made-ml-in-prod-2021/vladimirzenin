@@ -7,6 +7,7 @@ from typing import Tuple
 
 
 def get_train_test(data_params: DataParams, splitting_params: SplittingParams) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+	logging.info('start csv reading for get_train_test function')
 	if os.path.exists(data_params.input_data_path):
 		data = pd.read_csv(data_params.input_data_path)
 		X = data.drop('target', axis=1)
@@ -19,6 +20,7 @@ def get_train_test(data_params: DataParams, splitting_params: SplittingParams) -
 
 
 def get_predict_data(data_params: DataParams) -> pd.DataFrame:
+	logging.info('start csv reading for get_predict_data function')
 	if os.path.exists(data_params.input_data_path):
 		data = pd.read_csv(data_params.input_data_path)
 		X = data.drop('target', axis=1)
