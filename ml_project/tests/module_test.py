@@ -2,7 +2,7 @@ import sys
 sys.path.insert(0, '../scripts')
 
 import pytest
-from data_models import DataParams, SplittingParams, TrainParams
+from data_models import TrainParams
 from model import model, save_model, load_model, get_predict, get_evaluate_model
 from sklearn.linear_model import LogisticRegression
 from typing import NoReturn
@@ -12,13 +12,6 @@ import pandas as pd
 
 def train_params() -> NoReturn:
 	return TrainParams(model_type="LogisticRegression")
-
-	
-def data_params():
-	return DataParams(input_data_path= "test.csv",
-			output_model_path= "model.pkl",
-			metric_path= "metrics.json",
-			output_predict_path= "predict.csv")
 
 
 @pytest.mark.maintest
@@ -50,8 +43,7 @@ def test_module() -> NoReturn:
 	assert mae >= 0.0 and mae <= 1.0
 	assert mse >= 0.0 and mse <= 1.0
 	
-	params = data_params()
-	predict = get_predict(pretrain_model, X, params)
+	predict = get_predict(pretrain_model, X)
 	assert predict[0] == 0 or predict[0] == 1
 	assert len(predict) == len(X)
 
