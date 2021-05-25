@@ -7,7 +7,7 @@ LABEL name=ml_in_prod \
 	student=zenin
 
 # requirements меняются реже всего, поэтому их и их установку - в начало.
-COPY ml_project/scripts/requirements.txt /scripts/requirements.txt
+COPY ml_project/requirements.txt /scripts/requirements.txt
 COPY online_inference/server/requirements.txt /server/requirements.txt
 
 # Объединено в одну команду с целью сокращения количества слоев.

@@ -43,6 +43,11 @@ def predict(work_model: LogisticRegression, X: DataFrame, data_params: DataParam
 	DataFrame(predict).to_csv(data_params.output_predict_path, index=False, header=False)
 
 
+def simple_predict(work_model: LogisticRegression, X: DataFrame) -> list:
+	predict = get_predict(work_model, X)
+	return list(predict)
+
+
 def save_model(work_model: LogisticRegression, path: str) -> NoReturn:
 	logging.info('start saving model')
 	with open(path, "wb") as stream:

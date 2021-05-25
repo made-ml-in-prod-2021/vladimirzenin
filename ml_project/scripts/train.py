@@ -43,12 +43,6 @@ def main(config: str) -> NoReturn:
 	logging.info('end')
 
 
-#@click.command(name="train_pipeline")
-#@click.argument("config")
-#def train_pipeline_command(config: str):
-#	main(config)
-
-
 if __name__ == "__main__":
 	main()
 
