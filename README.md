@@ -12,3 +12,4 @@ https://data.mail.ru/profile/v.zenin/
 ### Домашее задание 2  
 Папка online_inference  
 Небольшие изменения в папке ml_project  
+ 
