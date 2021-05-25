@@ -3,3 +3,9 @@ https://data.mail.ru/blog/view/339/
 
 Студент:
 https://data.mail.ru/profile/v.zenin/
+
+В папке каждого домашнего задания доступен свой Readme файл с подробностями решения.
+
+Выполнены:  
+### Домашее задание 1  
+Папка ml_project  

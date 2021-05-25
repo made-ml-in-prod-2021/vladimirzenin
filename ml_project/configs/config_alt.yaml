@@ -1,0 +1,10 @@
+data_params:
+  input_data_path: "../data/external/heart.csv"
+  output_model_path: "../models/model_alt.pkl"
+  metric_path: "../models/metrics_alt.json"
+  output_predict_path: "../models/predict_alt.csv"
+splitting_params:
+  test_size: 0.5
+  random_state: 42
+train_params:
+  model_type: "LogisticRegression"
