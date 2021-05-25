@@ -28,4 +28,4 @@ COPY online_inference/server /server
 
 WORKDIR server
 
-CMD ["sh", "-c", "python3 m_test.py && python3 m_server.py"]
+CMD ["sh", "-c", "pytest -m servertest && python3 m_server.py"]
