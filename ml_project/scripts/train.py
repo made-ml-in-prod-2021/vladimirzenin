@@ -3,11 +3,17 @@ from get_train_test import get_train_test
 from data_models import read_data_params, read_splitting_params, read_train_params
 from model import model, save_model, evaluate_model
 import click
+from typing import NoReturn
 
 
 @click.command()
-@click.option("--config", default='../configs/config.yaml', help="path to yaml config.")
-def main(config: str):
+@click.option("--config", help="path to yaml config.")
+def main(config: str) -> NoReturn:
+	if config is None:
+		logging.error('you must specify the path to config file!')
+		logging.error('train failed!')
+		return
+	
 	logging.info('start')
 	data_params = read_data_params(config)
 	splitting_params = read_splitting_params(config)
@@ -33,6 +39,8 @@ def main(config: str):
 	logging.info('model evaluated')
 	
 	save_model(work_model, data_params.output_model_path)
+	logging.info('model saved')
+	logging.info('end')
 
 
 #@click.command(name="train_pipeline")
