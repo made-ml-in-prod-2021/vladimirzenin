@@ -1,6 +1,7 @@
 import logging
 import yaml
 from dataclasses import dataclass
+from pydantic import BaseModel
 
 
 @dataclass
@@ -20,6 +21,26 @@ class SplittingParams:
 @dataclass
 class TrainParams:
     model_type: str
+
+
+class JsonItem(BaseModel):
+    age: int
+    sex: int
+    cp: int
+    trestbps: int
+    chol: int
+    fbs:int
+    restecg: int
+    thalach: int
+    exang: int
+    oldpeak: float
+    slope: int
+    ca: int
+    thal: int
+
+
+class JsonArr(BaseModel):
+    data: list[JsonItem]
 
 
 def read_data_params(path: str) -> DataParams:

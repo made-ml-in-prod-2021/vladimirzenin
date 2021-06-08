@@ -1,7 +1,7 @@
 import logging
-from get_train_test import get_predict_data
-from data_models import read_data_params
-from model import predict, load_model
+from get_train_test import get_predict_data, get_df_from_json
+from data_models import read_data_params, JsonArr
+from model import predict, load_model, simple_predict
 import click
 from typing import NoReturn
 
@@ -35,6 +35,21 @@ def main(config: str) -> NoReturn:
 	
 	predict(work_model, X, data_params)
 	logging.info('model predicted')
+
+
+def get_predict_json(input_data: JsonArr) -> str:
+	config = "../configs/config.yaml"
+	output_model_path = "../models/model.pkl"
+	
+	X = get_df_from_json(input_data)
+	if X is None:
+		return None
+	
+	work_model = load_model(output_model_path)
+	if work_model is None:
+		return
+	answ = simple_predict(work_model, X)
+	return ','.join([str(n) for n in answ])
 
 
 if __name__ == "__main__":
