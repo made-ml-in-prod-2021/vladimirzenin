@@ -25,6 +25,8 @@ https://data.mail.ru/profile/v.zenin/
   
 Т.о. мы получили собранный под из локального докер-образа.  
   
+![Скриншот](https://raw.githubusercontent.com/made-ml-in-prod-2021/vladimirzenin/homework4/kuber/pod1.png)  
+  
 #### Список манифестов в порядке выполнения задания
 - online-inference-pod.yaml - простой под.  
 - online-inference-pod-resources.yaml - под с выделением ресурсов.  
