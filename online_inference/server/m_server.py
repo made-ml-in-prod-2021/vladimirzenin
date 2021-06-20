@@ -8,8 +8,10 @@ import sys
 sys.path.insert(0, '../scripts')
 from predict import get_predict_json
 from data_models import JsonItem, JsonArr
+import datetime
 
 
+start_date = datetime.datetime.now()
 app = FastAPI()
 
 
@@ -36,6 +38,24 @@ async def get_predict_single(input_data: JsonItem) -> str:
 async def get_predict_batch(input_data: JsonArr) -> str:
     answ = get_predict_json(input_data)
     return answ
+
+
+@app.get("/readiness")
+def readiness() -> bool:
+    curr_date = datetime.datetime.now()
+    if (curr_date - start_date).seconds > 20:
+        return True
+    else:
+        return False
+
+
+@app.get("/liveness")
+def liveness() -> bool:
+    curr_date = datetime.datetime.now()
+    if (curr_date - start_date).seconds > 60:
+        sys.exit()
+    else:
+        return True
 
 
 if __name__ == "__main__":

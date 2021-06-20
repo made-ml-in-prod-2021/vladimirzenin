@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: made-inf-replicaset-rolling
+  labels:
+    hw: "4"
+    app: made
+spec:
+  replicas: 6
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 4
+      maxUnavailable: 2
+  selector:
+    matchLabels:
+      app: made-inf-replicaset-rolling
+  template:
+    metadata:
+      name: made-inf-replicaset-rolling
+      labels:
+        app: made-inf-replicaset-rolling
+    spec:
+      containers:
+      - name: made-inf-replicaset-rolling
+        image: made/inference
+        imagePullPolicy: Never # Мы хотим использовать локальный образ, а не тянуть из репозитория.
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 8050

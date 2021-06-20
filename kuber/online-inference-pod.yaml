@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: made-inf
+  labels:
+    hw: "4"
+    app: made
+spec:
+  containers:
+  - name: made-inf
+    image: made/inference
+    imagePullPolicy: Never # Мы хотим использовать локальный образ, а не тянуть из репозитория.
+    ports:
+      - containerPort: 8050
