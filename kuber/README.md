@@ -18,20 +18,20 @@ https://data.mail.ru/profile/v.zenin/
 3. Из этой же (важно) консоли переходим в расположение Dockerfile и выполняем сборку стандартной командой сборки для докера. Результат станет виден для кубера. Собранные иным способом контейнеры не видны. Обратите внимание, что в интерфейсе докера этого контейнера не будет, он хранится только внутри кубера.  
 В моем случае это были команды:  
 `cd online_inference\docker`  
-`docker build -f Dockerfile -t made/inference3 ../..`   
+`docker build -f Dockerfile -t made/inference ../..`   
 4. Переходим в расположение yaml файла и производим сборку командой  
 `cd kuber`  
-`kuberctl apply -f my-online-inference.yaml`  
+`kuberctl apply -f online-inference-pod.yaml`  
   
 Т.о. мы получили собранный под из локального докер-образа.  
   
 #### Список манифестов в порядке выполнения задания
-online-inference-pod.yaml - простой под.
-online-inference-pod-resources.yaml - под с выделением ресурсов.
-online-inference-pod-probes.yaml - под с проверкой на работоспособность. При падении перезапускается.
-online-inference-replicaset.yaml - создает "стадо" подов.
-online-inference-deployment-blue-green.yaml - управляет выкаткой новых версий подов. При заданных настройках сначала поднимаются поды с новой версией, потом останавливаются старые.
-online-inference-deployment-rolling-update.yaml - управляет выкаткой новых версий подов. При заданных настройках поочередно поднимаются новые и останавливаются старые поды (4 запустили, 2 остановили).
+- online-inference-pod.yaml - простой под.  
+- online-inference-pod-resources.yaml - под с выделением ресурсов.  
+- online-inference-pod-probes.yaml - под с проверкой на работоспособность. При падении перезапускается.  
+- online-inference-replicaset.yaml - создает "стадо" подов.  
+- online-inference-deployment-blue-green.yaml - управляет выкаткой новых версий подов. При заданных настройках сначала поднимаются поды с новой версией, потом останавливаются старые.  
+- online-inference-deployment-rolling-update.yaml - управляет выкаткой новых версий подов. При заданных настройках поочередно поднимаются новые и останавливаются старые поды (4 запустили, 2 остановили).  
   
 #### resources  
 В манифесте online-inference-pod-resources.yaml прописаны требуемые ресурсы приложения.
@@ -63,12 +63,12 @@ limits - количество ресурсов до которого можно 
 0. Установите kubectl  
 1. Разверните kubernetes  
 Вы можете развернуть его в облаке:  
-- https://cloud.google.com/kubernetes-engine  
-- https://mcs.mail.ru/containers/  
-- https://cloud.yandex.ru/services/managed-kubernetes  
+https://cloud.google.com/kubernetes-engine  
+https://mcs.mail.ru/containers/  
+https://cloud.yandex.ru/services/managed-kubernetes  
 Либо воспользоваться локальной инсталляцией  
-- https://kind.sigs.k8s.io/docs/user/quick-start/  
-- https://minikube.sigs.k8s.io/docs/start/  
+https://kind.sigs.k8s.io/docs/user/quick-start/  
+https://minikube.sigs.k8s.io/docs/start/  
   
 Напишите, какой способ вы избрали.   
 Убедитесь, с кластер поднялся (kubectl cluster-info)   
