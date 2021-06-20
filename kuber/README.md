@@ -69,7 +69,6 @@ https://cloud.yandex.ru/services/managed-kubernetes
 Либо воспользоваться локальной инсталляцией  
 https://kind.sigs.k8s.io/docs/user/quick-start/  
 https://minikube.sigs.k8s.io/docs/start/  
-  
 Напишите, какой способ вы избрали.   
 Убедитесь, с кластер поднялся (kubectl cluster-info)   
 (5 баллов)  
@@ -92,7 +91,6 @@ https://minikube.sigs.k8s.io/docs/start/
 Опубликуйте ваше приложение(из ДЗ 2) с тэгом v2
 Выполнено.  
 4. Создайте replicaset, сделайте 3 реплики вашего приложения. (https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)  
-  
 Ответьте на вопрос, что будет, если сменить докер образа в манифесте и одновременно с этим   
 а) уменьшить число реплик  
 б) увеличить число реплик.  
