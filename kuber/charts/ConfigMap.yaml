@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: predconfig
+  namespace: default
+data:
+  replicas: 4

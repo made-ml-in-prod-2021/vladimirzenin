@@ -3,3 +3,4 @@ __pycache__/*
 *.pyc
 ml_project/notebooks/.ipynb_checkpoints/test-checkpoint.ipynb
 ml_project/notebooks/.ipynb_checkpoints/Prototype-checkpoint.ipynb
+kuber/helm.exe
